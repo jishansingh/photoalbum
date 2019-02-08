@@ -11,11 +11,15 @@ for Windows open powershell
 ```
 ### Installing
 After installing django-admin
-
+got to location of cloned directory
 ```
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
+```
+create media directory in basic directory
+```
+mkdir media
 ```
 Now all setup runserver
 ```
