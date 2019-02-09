@@ -1,0 +1,33 @@
+{% extends 'todo/base.html' %}
+{% block body %}
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'todo/todo.css' %}" />
+
+	<form action="" method="post">
+		{% csrf_token %}
+		
+		<div class="form-group ">
+			{% for fields in form %}
+				
+    			
+    				{% if form.errors %}
+    				<div class="special">
+    					<b>{{fields.label_tag}} <i>incorrect</i></b>
+					</div>
+					{% else %}
+						<div>
+    						<b>{{fields.label_tag}}</b>
+						</div>
+					{% endif %}
+    			<div id="him">
+					{{fields}}
+				</div>
+			{% endfor %}<br>
+			<button type="submit" class="btn btn-success">LogIn</button>
+			</div>
+	</form>
+
+
+
+
+{% endblock %}

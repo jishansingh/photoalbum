@@ -1,0 +1,40 @@
+{% extends 'todo/base.html' %}
+{% block body %}
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'todo/todo.css' %}" />
+<div class="container container-fluid">
+	<div class="jumbotron">
+		<h1><i class="fa fa-camera-retro" aria-hidden="true"></i>Photo Gallery</h1>
+		<blockquote>
+		<p>My favourite Pics<br><b>Nature's beauty is a gift that cultivates appreciation and gratitude.</p>by
+		<footer><i><cite title="anonymous">anonymous</cite></i></footer></b>
+		</blockquote>
+		{% if but %}		
+		{% else %}
+			<div class="col-lg-4 col-sm-6">
+				<a href="{% url 'todo:index' %}"><button class="btn btn-success">Done</button></a>
+			</div>
+		{% endif %}
+	</div>
+	
+</div>
+
+
+<div class="row">
+	{% for c in todo %}
+		<div class="col-lg-4 col-sm-6 container">
+			<form action="{% url 'todo:delete' c.id %}" method="post">
+				{% csrf_token %}
+				<div class="rounded" >
+					<img src="{{c.image.url}}" class="img-fluid" alt="Responsive image">
+				</div>
+				{% if but %}
+				{% else %}
+					<button class="btn btn-danger" type="submit" >x</button>
+				{% endif %}
+			</form>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

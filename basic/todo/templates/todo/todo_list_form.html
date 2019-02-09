@@ -1,0 +1,19 @@
+{% extends 'todo/base.html' %}
+{% block body %}
+
+	<form action="" method="post" class="form" enctype="multipart/form-data">
+		{% csrf_token %}
+		{% for c in form %}
+		  <div class="form-group">
+		    	<div class="form-control" id="name" placeholder="name">
+					<label for="name">{{c.label_tag}}</label>
+					{{c}}
+				</div>
+			</div>
+		{% endfor %}
+	  
+	  <button type="submit" class="btn btn-success">Add</button>
+	</form>
+{% endblock %}
+
+
